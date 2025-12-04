@@ -8,11 +8,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DocupetController extends AbstractController
 {
-    #[Route('/home')]
+    #[Route('/')]
     public function home(): Response
     {
-        return new Response(
-            '<html><body>HOME</body></html>'
-        );
+        return $this->render('dangerous_animal.html.twig');
     }
 }

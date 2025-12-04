@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{%  block body %}
+<div class="dangerous-animal-form">
+    <form>
+        <label for="petType">What type of pet do you have?</label><br>
+        <label for="petType">Cat</label>
+        <input type="radio" id="cat" name="petType">
+        <label for="sexFemale">Dog</label>
+        <input type="radio" id="dog" name="petType"><br>
+
+        <label for="petName">Pet Name:</label><br>
+        <input type="text" id="petName" name="petName"><br>
+
+        <label for="petBreed">What breed are they?</label><br>
+        <input type="text" id="petBreed" name="petBreed"><br>
+        <label for="unknownBreed">I Don't Know</label><br>
+        <input type="radio" id="unknownBreed" name="petBreed"><br>
+        <label for="mixBreed">It's A Mix</label><br>
+        <input type="radio" id="mixBreed" name="petBreed"><br>
+
+        <label for="sexMale">Male</label>
+        <input type="radio" id="sexMale" name="sex">
+        <label for="sexFemale">Female</label>
+        <input type="radio" id="sexFemale" name="sex"><br>
+
+        <label for="petAge">Do you know their date of birth?</label><br>
+        <input type="text" id="petAge" name="petAge"><br>
+
+        <input type="submit" value="Continue">
+    </form>
+</div>
+{%  endblock %}
