@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Breed;
+use App\Entity\DangerousBreed;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Pet;
 use Doctrine\ORM\EntityManagerInterface;
@@ -22,6 +23,12 @@ class PetController extends AbstractController
         $breed = $entityManager->getRepository(Breed::class)->findBy([
             'type' => $request->getPayload()->get('breed')
         ]);
+
+        // Todo: fix this proper eventually
+        $dangerousBreeds = $entityManager->getRepository(DangerousBreed::class)->findAll();
+        $dangerousBreeds = array_map(function ($breed) {
+            return $breed->getBreed()->getType();
+        }, $dangerousBreeds);
 
         if (empty($breed)) {
             $breed = new Breed();
@@ -43,6 +50,7 @@ class PetController extends AbstractController
         $entityManager->persist($pet);
         $entityManager->flush();
 
-        return $this->json($pet);
+        $petModel = new \App\Response\PetResponse($pet, $dangerousBreeds);
+        return $this->json($petModel);
     }
 }
