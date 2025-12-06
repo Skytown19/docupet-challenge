@@ -16,8 +16,8 @@ class Pet
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column]
-    private ?int $sex = null;
+    #[ORM\Column(length: 255)]
+    private ?string $sex = null;
 
     public function getId(): ?int
     {
@@ -41,7 +41,7 @@ class Pet
         return $this->sex;
     }
 
-    public function setSex(int $sex): static
+    public function setSex(string $sex): static
     {
         $this->sex = $sex;
 
