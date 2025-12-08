@@ -1,33 +1,58 @@
 {% extends 'base.html.twig' %}
 
-{%  block body %}
-<div class="dangerous-animal-form">
-    <form>
-        <label for="petType">What type of pet do you have?</label><br>
-        <label for="petType">Cat</label>
-        <input type="radio" id="cat" name="petType">
-        <label for="sexFemale">Dog</label>
-        <input type="radio" id="dog" name="petType"><br>
+{% block body %}
 
-        <label for="petName">Pet Name:</label><br>
-        <input type="text" id="petName" name="petName"><br>
+    <div class="dangerous-animal-form">
+        <form>
+            <span class="text-sm font-medium text-gray-700"> What type of pet do you have? </span><br>
+            <div class="inline-flex">
+                <button
+                    class="rounded-l-sm border border-gray-200 px-3 py-2 font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900 focus:z-10 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white focus:outline-none disabled:pointer-events-auto disabled:opacity-50">
+                    Dog
+                </button>
+                <button
+                    class="-ml-px border border-gray-200 px-3 py-2 font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900 focus:z-10 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white focus:outline-none disabled:pointer-events-auto disabled:opacity-50">
+                    Cat
+                </button>
+            </div>
+            <br>
 
-        <label for="petBreed">What breed are they?</label><br>
-        <input type="text" id="petBreed" name="petBreed"><br>
-        <label for="unknownBreed">I Don't Know</label><br>
-        <input type="radio" id="unknownBreed" name="petBreed"><br>
-        <label for="mixBreed">It's A Mix</label><br>
-        <input type="radio" id="mixBreed" name="petBreed"><br>
+            <label for="petName">
+                <span class="text-sm font-medium text-gray-700"> Pet Name: </span>
+                <input type="text" id="petName" name="petName"
+                       class="mt-0.5 w-full rounded border-gray-300 shadow-sm sm:text-sm">
+            </label>
 
-        <label for="sexMale">Male</label>
-        <input type="radio" id="sexMale" name="sex">
-        <label for="sexFemale">Female</label>
-        <input type="radio" id="sexFemale" name="sex"><br>
+            <label for="petBreed">
+                <span class="text-sm font-medium text-gray-700"> What breed are they? </span>
+                <input type="text" id="petBreed" name="petBreed"
+                       class="mt-0.5 w-full rounded border-gray-300 shadow-sm sm:text-sm">
+                <label for="unknownBreed">I Don't Know</label><br>
+                <input type="radio" id="unknownBreed" name="petBreed"><br>
+                <label for="mixBreed">It's A Mix</label><br>
+                <input type="radio" id="mixBreed" name="petBreed"><br>
+            </label>
 
-        <label for="petAge">Do you know their date of birth?</label><br>
-        <input type="text" id="petAge" name="petAge"><br>
+            <span class="text-sm font-medium text-gray-700"> What gender are they? </span><br>
+            <div class="inline-flex">
+                <button
+                    class="rounded-l-sm border border-gray-200 px-3 py-2 font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900 focus:z-10 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white focus:outline-none disabled:pointer-events-auto disabled:opacity-50">
+                    Male
+                </button>
+                <button
+                    class="-ml-px border border-gray-200 px-3 py-2 font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900 focus:z-10 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white focus:outline-none disabled:pointer-events-auto disabled:opacity-50">
+                    Female
+                </button>
+            </div>
+            <br>
 
-        <input type="submit" value="Continue">
-    </form>
-</div>
-{%  endblock %}
+            <label for="petAge">
+                <span class="text-sm font-medium text-gray-700"> Do you know their date of birth?</span>
+                <input type="text" id="petAge" name="petAge"
+                       class="mt-0.5 w-full rounded border-gray-300 shadow-sm sm:text-sm">
+            </label>
+
+            <input type="submit" value="Continue">
+        </form>
+    </div>
+{% endblock %}
