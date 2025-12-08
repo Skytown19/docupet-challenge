@@ -5,45 +5,63 @@
     <div class="dangerous-animal-form">
         <form>
             <span class="text-sm font-medium text-gray-700"> What type of pet do you have? </span><br>
-            <div class="inline-flex">
-                <button
-                    class="rounded-l-sm border border-gray-200 px-3 py-2 font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900 focus:z-10 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white focus:outline-none disabled:pointer-events-auto disabled:opacity-50">
+            <div class="inline-flex rounded-base shadow-xs -space-x-px" role="group">
+                <button type="button"
+                        class="text-body bg-neutral-primary-soft border border-default hover:bg-neutral-secondary-medium hover:text-heading focus:ring-3 focus:ring-neutral-tertiary-soft font-medium leading-5 rounded-s-base text-sm px-3 py-2 focus:outline-none">
                     Dog
                 </button>
-                <button
-                    class="-ml-px border border-gray-200 px-3 py-2 font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900 focus:z-10 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white focus:outline-none disabled:pointer-events-auto disabled:opacity-50">
+                <button type="button"
+                        class="text-body bg-neutral-primary-soft border border-default hover:bg-neutral-secondary-medium hover:text-heading focus:ring-3 focus:ring-neutral-tertiary-soft font-medium leading-5 rounded-e-base text-sm px-3 py-2 focus:outline-none">
                     Cat
                 </button>
             </div>
-            <br>
 
             <label for="petName">
-                <span class="text-sm font-medium text-gray-700"> Pet Name: </span>
+                <span class="block mb-2.5 text-sm font-medium text-heading"> Pet Name: </span>
                 <input type="text" id="petName" name="petName"
-                       class="mt-0.5 w-full rounded border-gray-300 shadow-sm sm:text-sm">
+                       class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body">
             </label>
 
-            <label for="petBreed">
-                <span class="text-sm font-medium text-gray-700"> What breed are they? </span>
-                <input type="text" id="petBreed" name="petBreed"
-                       class="mt-0.5 w-full rounded border-gray-300 shadow-sm sm:text-sm">
-                <label for="unknownBreed">I Don't Know</label><br>
-                <input type="radio" id="unknownBreed" name="petBreed"><br>
-                <label for="mixBreed">It's A Mix</label><br>
-                <input type="radio" id="mixBreed" name="petBreed"><br>
-            </label>
+            <label for="petBreed" class="block mb-2.5 text-sm font-medium text-heading">What breed are they?</label>
+            <select id="petBreed"
+                    class="block w-full px-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body">
+                <option selected>Choose a breed</option>
+                <option value="Doberman">Doberman</option>
+                <option value="St. Bernard">St. Bernard</option>
+                <option value="Poodl">Poodle</option>
+                <option value="Mastiff">Mastiff</option>
+            </select>
+            <fieldset><legend class="sr-only">Breed</legend>
+                <div class="flex items-center mb-4">
+                    <input id="breed-option-1" type="radio" name="petBreeds" value="Unknown"
+                           class="w-4 h-4 text-neutral-primary border-default-medium bg-neutral-secondary-medium rounded-full checked:border-brand focus:ring-2 focus:outline-none focus:ring-brand-subtle border border-default appearance-none">
+                    <label for="country-option-1" class="select-none ms-2 text-sm font-medium text-heading">
+                        I don't know
+                    </label>
+                </div>
+
+                <div class="flex items-center mb-4">
+                    <input id="breed-option-2" type="radio" name="petBreeds" value="Mix"
+                           class="w-4 h-4 text-neutral-primary border-default-medium bg-neutral-secondary-medium rounded-full checked:border-brand focus:ring-2 focus:outline-none focus:ring-brand-subtle border border-default appearance-none">
+                    <label for="country-option-2" class="select-none ms-2 text-sm font-medium text-heading">
+                        It's a mix
+                    </label>
+                </div>
+            </fieldset>
 
             <span class="text-sm font-medium text-gray-700"> What gender are they? </span><br>
-            <div class="inline-flex">
-                <button
-                    class="rounded-l-sm border border-gray-200 px-3 py-2 font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900 focus:z-10 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white focus:outline-none disabled:pointer-events-auto disabled:opacity-50">
+            <div class="inline-flex rounded-base shadow-xs -space-x-px" role="group">
+                <button type="button"
+                        class="text-body bg-neutral-primary-soft border border-default hover:bg-neutral-secondary-medium hover:text-heading focus:ring-3 focus:ring-neutral-tertiary-soft font-medium leading-5 rounded-s-base text-sm px-3 py-2 focus:outline-none">
                     Male
                 </button>
-                <button
-                    class="-ml-px border border-gray-200 px-3 py-2 font-medium text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900 focus:z-10 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white focus:outline-none disabled:pointer-events-auto disabled:opacity-50">
+                <button type="button"
+                        class="text-body bg-neutral-primary-soft border border-default hover:bg-neutral-secondary-medium hover:text-heading focus:ring-3 focus:ring-neutral-tertiary-soft font-medium leading-5 rounded-e-base text-sm px-3 py-2 focus:outline-none">
                     Female
                 </button>
             </div>
+            <input hidden type="radio" id="male" name="petSex">
+            <input hidden type="radio" id="female" name="petSex">
             <br>
 
             <label for="petAge">
