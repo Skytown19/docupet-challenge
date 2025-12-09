@@ -2,7 +2,7 @@
 
 {% block body %}
 
-    <div class="dangerous-animal-form">
+    <div id="dangerousAnimalForm">
         <form>
             {# PET TYPE SELECTOR #}
             <span class="text-sm font-medium text-gray-700"> What type of pet do you have? </span><br>
@@ -84,11 +84,55 @@
             </label>
 
         </form>
+        <br>
         <button id="submit" type="button"
                 class="text-white bg-success box-border border border-transparent hover:bg-success-strong focus:ring-4 focus:ring-success-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
             Success
         </button>
 
 
+    </div>
+
+    <div id="results" hidden>
+        <div class="flow-root">
+            <dl class="-my-3 divide-y divide-gray-200 text-sm">
+                <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+                    <dt class="font-medium text-gray-900">Name</dt>
+                    <dd id="petNameResult" class="text-gray-700 sm:col-span-2"></dd>
+                </div>
+
+                <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+                    <dt class="font-medium text-gray-900">Type</dt>
+                    <dd id="petTypeResult" class="text-gray-700 sm:col-span-2"></dd>
+                </div>
+
+                <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+                    <dt class="font-medium text-gray-900">Breed</dt>
+                    <dd id="petBreedResult" class="text-gray-700 sm:col-span-2"></dd>
+                </div>
+
+                <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+                    <dt class="font-medium text-gray-900">Date of Birth</dt>
+                    <dd id="petDateOfBirthResult" class="text-gray-700 sm:col-span-2"></dd>
+                </div>
+
+                <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+                    <dt class="font-medium text-gray-900">Age</dt>
+                    <dd id="petDateOfBirthResult" class="text-gray-700 sm:col-span-2"></dd>
+                </div>
+
+                <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+                    <dt class="font-medium text-gray-900">Sex</dt>
+                    <dd id="petSexResult" class="text-gray-700 sm:col-span-2"></dd>
+                </div>
+
+                <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+                    <dt class="font-medium text-gray-900">Dangerous</dt>
+                    <dd id="isDangerousAnimal" class="text-gray-700 sm:col-span-2">
+
+                    </dd>
+                </div>
+            </dl>
+        </div>
     </div>
 {% endblock %}

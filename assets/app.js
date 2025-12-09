@@ -55,7 +55,13 @@ class Pet {
 
 function submitPet($pet) {
     $.post("pet", $pet).done((data) => {
-        console.log("DATA FROM SERVER: " + data)
+        $("#dangerousAnimalForm").attr("hidden", true);
+        $("#petNameResult").text(data.name);
+        $("#petTypeResult").text(data.type);
+        $("#petBreedResult").text(data.breed.join(", "));
+        $("#petSexResult").text(data.sex);
+        $("#petDateOfBirthResult").text(data.dateOfBirth);
+        $("#results").removeAttr("hidden");
     });
 }
 
@@ -77,7 +83,6 @@ $(document).ready(function() {
     $("#petSexFemale").on("click", () => {
         $pet.setSex('Female');
     });
-
 
     $("#submit").on("click", () => {
         $pet.setName($("#petName").val());
