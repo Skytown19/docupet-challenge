@@ -10,10 +10,17 @@
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
 
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
     {% endblock %}
-    <script src="../node_modules/flowbite/dist/flowbite.js"></script>
+{#    <script>#}
+{#        function submitForm() {#}
+{#            alert('SUHHH DUDE');#}
+{#        }#}
+{#    </script>#}
+
 </head>
 <body>
 {% block body %}{% endblock %}
