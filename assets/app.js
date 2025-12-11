@@ -69,18 +69,26 @@ $(document).ready(function() {
     let $pet = new Pet();
     // jQuery code
     $("#petTypeDog").on("click", () => {
+        $("#petTypeDog").addClass('selected');
+        $("#petTypeCat").removeClass('selected');
         $pet.setType('Dog');
     });
 
     $("#petTypeCat").on("click", () => {
+        $("#petTypeCat").addClass('selected');
+        $("#petTypeDog").removeClass('selected');
         $pet.setType('Cat');
     });
 
     $("#petSexMale").on("click", () => {
+        $("#petSexMale").addClass('selected');
+        $("#petSexFemale").removeClass('selected');
         $pet.setSex('Male');
     });
 
     $("#petSexFemale").on("click", () => {
+        $("#petSexFemale").addClass('selected');
+        $("#petSexMale").removeClass('selected');
         $pet.setSex('Female');
     });
 
