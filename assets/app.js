@@ -53,8 +53,8 @@ class Pet {
     }
 }
 
-async function submitPet($pet) {
-    await fetch('/pet', {
+function submitPet($pet) {
+    return fetch('/pet', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -135,13 +135,22 @@ function domReady () {
         document.getElementById('results').toggleAttribute('hidden');
     });
 
-    document.getElementById('submit').addEventListener('click', () => {
-        $pet.setType('Dog');
-        $pet.setSex('Male');
-        $pet.setName('Rudolph');
-        $pet.setBreed('Poodle');
-        $pet.setDateOfBirth('12-01-2023');
-        submitPet($pet);
+    document.getElementById('submit').addEventListener('click', async () => {
+        // Set properties that aren't automatic
+        pet.setName(document.getElementById('petName').value);
+        pet.setBreed(document.getElementById('petBreed').value);
+        pet.setDateOfBirth(document.getElementById('default-datepicker').value);
+        const response = await submitPet(pet);
+        const result = await response.json();
+
+        document.getElementById('petNameResult').textContent = result.name;
+        document.getElementById('petTypeResult').textContent = result.type;
+        document.getElementById('petBreedResult').textContent = result.breed.join(", ");
+        document.getElementById('petSexResult').textContent = result.sex;
+        document.getElementById('petDateOfBirthResult').textContent = result.dateOfBirth;
+
+        document.getElementById('dangerousAnimalForm').toggleAttribute('hidden');
+        document.getElementById('results').toggleAttribute('hidden');
     });
 }
 
