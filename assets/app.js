@@ -92,9 +92,21 @@ $(document).ready(function() {
         $pet.setSex('Female');
     });
 
+    $("#petKnownDateOfBirth").on("click", () => {
+        const datePicker = document.getElementById('petDatePicker');
+        $("#petKnownDateOfBirth").addClass('selected');
+        $("#petUnknownDateOfBirth").removeClass('selected');
+        datePicker.toggleAttribute('hidden');
+    });
+
+    $("#petUnknownDateOfBirth").on("click", () => {
+        const approximateAgeInput = document.getElementById('petApproximateAge');
+        $("#petUnknownDateOfBirth").addClass('selected');
+        $("#petKnownDateOfBirth").removeClass('selected');
+        approximateAgeInput.toggleAttribute('hidden');
+    });
+
     $("#mixedCheckbox").on("click", () => {
-        console.log('SO CLOSE');
-        const mixedCheckbox = document.getElementById('mixedCheckbox');
         const mixedBreedInput = document.getElementById('mixedBreedInput');
         mixedBreedInput.toggleAttribute('hidden');
     });

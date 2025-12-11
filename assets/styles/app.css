@@ -2,12 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 @import "flowbite/src/themes/default.css";
 @plugin "flowbite/plugin";
-@source "../node_modules/flowbite";
+@source "../../node_modules/flowbite";
+@source "../../node_modules/flowbite-datepicker";
 @source not "../../public";
 
 body {
     background-color: lightblue;
-    margin: 20%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .selected {
