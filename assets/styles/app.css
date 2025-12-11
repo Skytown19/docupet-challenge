@@ -9,3 +9,7 @@ body {
     background-color: lightblue;
     margin: 20%;
 }
+
+.selected {
+    background: chartreuse;
+}
