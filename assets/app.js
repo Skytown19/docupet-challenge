@@ -92,6 +92,13 @@ $(document).ready(function() {
         $pet.setSex('Female');
     });
 
+    $("#mixedCheckbox").on("click", () => {
+        console.log('SO CLOSE');
+        const mixedCheckbox = document.getElementById('mixedCheckbox');
+        const mixedBreedInput = document.getElementById('mixedBreedInput');
+        mixedBreedInput.toggleAttribute('hidden');
+    });
+
     $("#submit").on("click", () => {
         $pet.setName($("#petName").val());
         $pet.setBreed($("#petBreed").val());

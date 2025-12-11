@@ -38,24 +38,24 @@
                 <option value="Poodl">Poodle</option>
                 <option value="Mastiff">Mastiff</option>
             </select>
-            <fieldset>
-                <legend class="sr-only">Breed</legend>
-                <div class="flex items-center mb-4">
-                    <input id="breed-option-1" type="radio" name="petBreeds" value="Unknown"
-                           class="w-4 h-4 text-neutral-primary border-default-medium bg-neutral-secondary-medium rounded-full checked:border-brand focus:ring-2 focus:outline-none focus:ring-brand-subtle border border-default appearance-none">
-                    <label for="breed-option-1" class="select-none ms-2 text-sm font-medium text-heading">
-                        I don't know
-                    </label>
-                </div>
 
-                <div class="flex items-center mb-4">
-                    <input id="breed-option-2" type="radio" name="petBreeds" value="Mix"
-                           class="w-4 h-4 text-neutral-primary border-default-medium bg-neutral-secondary-medium rounded-full checked:border-brand focus:ring-2 focus:outline-none focus:ring-brand-subtle border border-default appearance-none">
-                    <label for="breed-option-2" class="select-none ms-2 text-sm font-medium text-heading">
-                        It's a mix
-                    </label>
-                </div>
-            </fieldset>
+            <div class="flex items-center mb-4">
+                <input id="unknown-checkbox" type="checkbox" value="Unknown" class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
+                <label for="unknown-checkbox" class="select-none ms-2 text-sm font-medium text-heading">I don't know</label>
+            </div>
+            <div class="flex items-center">
+                <input id="mixedCheckbox" type="checkbox" value="Mixed" class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
+                <label for="mixed-checkbox" class="select-none ms-2 text-sm font-medium text-heading">It's a mix</label>
+            </div>
+
+            <div id="mixedBreedInput">
+                <label for="petMixedBreed">
+                    <span class="block mb-2.5 text-sm font-medium text-heading"> Pet Breed </span>
+                </label>
+                <input type="text" id="petMixedBreed" name="petMixedBreed"
+                       class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body">
+            </div>
+            
 
             {# PET GENDER FIELD #}
             <span class="text-sm font-medium text-gray-700"> What gender are they? </span><br>
