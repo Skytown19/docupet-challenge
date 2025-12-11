@@ -44,7 +44,7 @@ class Pet {
         this.breed = breed;
     }
 
-    getDateOfBirth(dateOfBrith) {
+    getDateOfBirth() {
         return this.dateOfBirth;
     }
 
@@ -53,75 +53,100 @@ class Pet {
     }
 }
 
-function submitPet($pet) {
-    $.post("pet", $pet).done((data) => {
-        $("#dangerousAnimalForm").attr("hidden", true);
-        $("#petNameResult").text(data.name);
-        $("#petTypeResult").text(data.type);
-        $("#petBreedResult").text(data.breed.join(", "));
-        $("#petSexResult").text(data.sex);
-        $("#petDateOfBirthResult").text(data.dateOfBirth);
-        $("#results").removeAttr("hidden");
+async function submitPet($pet) {
+    await fetch('/pet', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify($pet)
     });
 }
 
-$(document).ready(function() {
-    let $pet = new Pet();
-    // jQuery code
-    $("#petTypeDog").on("click", () => {
-        $("#petTypeDog").addClass('selected');
-        $("#petTypeCat").removeClass('selected');
+function domReady () {
+    let pet = new Pet();
+
+    // UI Elements;
+    const petTypeDogButton = document.getElementById('petTypeDog');
+    const petTypeCatButton = document.getElementById('petTypeCat');
+    const petSexMaleButton = document.getElementById('petSexMale');
+    const petSexFemaleButton = document.getElementById('petSexFemale');
+    const petKnownDateOfBirthButton = document.getElementById('petKnownDateOfBirth');
+    const petUnknownDateOfBirthButton = document.getElementById('petUnknownDateOfBirth');
+    const mixedCheckbox = document.getElementById('mixedCheckbox');
+    const backButton = document.getElementById('back');
+    const datePicker = document.getElementById('petDatePicker');
+    const mixedBreedInput = document.getElementById('mixedBreedInput');
+    const approximateAgeInput = document.getElementById('petApproximateAge');
+
+    // Event Listeners
+    petTypeDogButton.addEventListener('click', () => {
+        petTypeCatButton.classList.remove('selected');
+        petTypeDogButton.classList.add('selected');
+        pet.setType('Dog');
+    });
+
+    petTypeCatButton.addEventListener('click', () => {
+        petTypeDogButton.classList.remove('selected');
+        petTypeCatButton.classList.add('selected');
+        pet.setType('Cat');
+    });
+
+    petSexMaleButton.addEventListener('click', () => {
+        petSexFemaleButton.classList.remove('selected');
+        petSexMaleButton.classList.add('selected');
+        pet.setSex('Male');
+    });
+
+    petSexFemaleButton.addEventListener('click', () => {
+        petSexMaleButton.classList.remove('selected');
+        petSexFemaleButton.classList.add('selected');
+        pet.setSex('Female');
+    });
+
+    petKnownDateOfBirthButton.addEventListener('click', () => {
+        if (!petKnownDateOfBirthButton.classList.contains('selected')) {
+            petUnknownDateOfBirthButton.classList.remove('selected');
+            petKnownDateOfBirthButton.classList.add('selected');
+            if (!approximateAgeInput.hasAttribute('hidden')){
+                approximateAgeInput.toggleAttribute('hidden');
+            }
+            datePicker.toggleAttribute('hidden');
+        }
+    });
+
+    petUnknownDateOfBirthButton.addEventListener('click', () => {
+        if (!petUnknownDateOfBirthButton.classList.contains('selected')) {
+            petKnownDateOfBirthButton.classList.remove('selected');
+            petUnknownDateOfBirthButton.classList.add('selected');
+            if (!datePicker.hasAttribute('hidden')){
+                datePicker.toggleAttribute('hidden');
+            }
+            approximateAgeInput.toggleAttribute('hidden');
+        }
+    });
+
+    mixedCheckbox.addEventListener('click', () => {
+        document.getElementById('mixedBreedInput').toggleAttribute('hidden');
+    });
+
+    backButton.addEventListener('click', () => {
+        document.getElementById('dangerousAnimalForm').toggleAttribute('hidden');
+        document.getElementById('results').toggleAttribute('hidden');
+    });
+
+    document.getElementById('submit').addEventListener('click', () => {
         $pet.setType('Dog');
-    });
-
-    $("#petTypeCat").on("click", () => {
-        $("#petTypeCat").addClass('selected');
-        $("#petTypeDog").removeClass('selected');
-        $pet.setType('Cat');
-    });
-
-    $("#petSexMale").on("click", () => {
-        $("#petSexMale").addClass('selected');
-        $("#petSexFemale").removeClass('selected');
         $pet.setSex('Male');
+        $pet.setName('Rudolph');
+        $pet.setBreed('Poodle');
+        $pet.setDateOfBirth('12-01-2023');
+        submitPet($pet);
     });
+}
 
-    $("#petSexFemale").on("click", () => {
-        $("#petSexFemale").addClass('selected');
-        $("#petSexMale").removeClass('selected');
-        $pet.setSex('Female');
-    });
-
-    $("#petKnownDateOfBirth").on("click", () => {
-        const datePicker = document.getElementById('petDatePicker');
-        $("#petKnownDateOfBirth").addClass('selected');
-        $("#petUnknownDateOfBirth").removeClass('selected');
-        datePicker.toggleAttribute('hidden');
-    });
-
-    $("#petUnknownDateOfBirth").on("click", () => {
-        const approximateAgeInput = document.getElementById('petApproximateAge');
-        $("#petUnknownDateOfBirth").addClass('selected');
-        $("#petKnownDateOfBirth").removeClass('selected');
-        approximateAgeInput.toggleAttribute('hidden');
-    });
-
-    $("#mixedCheckbox").on("click", () => {
-        const mixedBreedInput = document.getElementById('mixedBreedInput');
-        mixedBreedInput.toggleAttribute('hidden');
-    });
-
-    $("#submit").on("click", () => {
-        $pet.setName($("#petName").val());
-        $pet.setBreed($("#petBreed").val());
-        $pet.setDateOfBirth($("#petAge").val());
-
-        submitPet({
-            "name": $pet.getName(),
-            "type": $pet.getType(),
-            "sex": $pet.getSex(),
-            "breed": $pet.getBreed(),
-            "date_of_birth": $pet.getDateOfBirth()
-        });
-    })
-});
+if (document.readyState !== 'loading') {
+    domReady();
+} else {
+    document.addEventListener('DOMContentLoaded', domReady)
+}
