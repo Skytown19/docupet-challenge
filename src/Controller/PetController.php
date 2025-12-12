@@ -51,7 +51,7 @@ class PetController extends AbstractController
         $dangerousBreeds = array_map(function ($breed) {
             return $breed->getBreed()->getType();
         }, $dangerousBreeds);
-        
+
         $petResponse = new PetResponse($pet, $dangerousBreeds);
         return $this->json($petResponse);
     }
