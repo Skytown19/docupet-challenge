@@ -19,6 +19,7 @@ class PetResponse
     public string $sex;
     public string $dateOfBirth;
     public bool $dangerous;
+    public int $age;
 
     public function __construct(Pet $pet, array $dangerousBreed)
     {
@@ -27,7 +28,9 @@ class PetResponse
         $this->breed = $this->formatBreed($pet->getBreed());
         $this->dangerous = $this->isDangerous($pet, $dangerousBreed);
         $this->sex = $pet->getSex();
-        $this->dateOfBirth = Carbon::parse($pet->getDateOfBirth())->format('Y-m-d');
+        $dateOfBirthObject = Carbon::parse($pet->getDateOfBirth());
+        $this->dateOfBirth = $dateOfBirthObject->format('Y-m-d');
+        $this->age = $dateOfBirthObject->age;
     }
 
     private function formatBreed($breeds): array
@@ -48,7 +51,6 @@ class PetResponse
          * I hate this; and I should just properly fix the relationship between breeds and dangerous breeds -.-
          */
         foreach ($pet->getBreed() as $breed) {
-
             if (in_array($breed->getType(), $dangerousBreeds)) {
                 return true;
             }
