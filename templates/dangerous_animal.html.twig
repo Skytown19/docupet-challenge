@@ -121,11 +121,11 @@
                            placeholder="Select date">
                 </div>
 
-                <div id="petApproximateAge" hidden>
-                    <label for="number-input">
+                <div id="approximateAge" hidden>
+                    <label for="petApproximateAge">
                         <span class="text-sm font-medium text-gray-700"> Approximate Age</span>
                     </label>
-                    <input type="number" id="number-input" aria-describedby="helper-text-explanation"
+                    <input id="petApproximateAge" type="number" aria-describedby="helper-text-explanation"
                            class="block w-full px-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body"/>
                 </div>
             </div>
@@ -164,20 +164,19 @@
 
                     <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
                         <dt class="font-medium text-gray-900">Age</dt>
-                        <dd id="petDateOfBirthResult" class="text-gray-700 sm:col-span-2"></dd>
+                        <dd id="petAgeResult" class="text-gray-700 sm:col-span-2"></dd>
                     </div>
 
                     <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
                         <dt class="font-medium text-gray-900">Sex</dt>
                         <dd id="petSexResult" class="text-gray-700 sm:col-span-2"></dd>
                     </div>
-
-                    <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
-                        <dt class="font-medium text-gray-900">Dangerous</dt>
-                        <dd id="isDangerousAnimal" class="text-gray-700 sm:col-span-2">
-                        </dd>
-                    </div>
                 </dl>
+                <br>
+                <div id="isDangerousAnimal" class="p-4 mb-4 text-sm text-fg-warning rounded-base bg-warning-soft" role="alert" hidden>
+                    <span class="font-medium">Warning!</span> <span id="breed"></span> is considered dangerous.
+                </div>
+                <br>
                 <div class="center-button">
                     <button id="back" type="button"
                             class="default-button text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
