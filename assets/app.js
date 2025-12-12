@@ -156,7 +156,14 @@ function domReady () {
         } else if (unknownBreedCheckbox.checked) {
             pet.setBreed('Unknown');
         } else {
-            pet.setBreed(document.getElementById('petBreed').value);
+            switch (pet.getType()) {
+                case 'Cat':
+                    pet.setBreed('Cat');
+                    break;
+                case 'Dog':
+                default:
+                    pet.setBreed(document.getElementById('petBreed').value);
+            }
         }
 
         // Case for Unknown Date of Birth
