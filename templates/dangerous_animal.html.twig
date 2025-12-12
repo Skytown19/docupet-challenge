@@ -45,14 +45,14 @@
             <div class="mb-5">
                 <div class="flex items-center">
                     <input id="unknown-checkbox" type="checkbox" value="Unknown"
-                           class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
+                           class="checkbox w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
                     <label for="unknown-checkbox" class="select-none ms-2 text-sm font-medium text-heading">
                         I don't know
                     </label>
                 </div>
                 <div class="flex items-center">
                     <input id="mixedCheckbox" type="checkbox" value="Mixed"
-                           class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
+                           class="checkbox w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
                     <label for="mixedCheckbox" class="select-none ms-2 text-sm font-medium text-heading">
                         It's a mix
                     </label>
@@ -129,11 +129,13 @@
                            class="block w-full px-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body"/>
                 </div>
             </div>
+            <div class="center-button">
+                <button id="submit" type="button"
+                        class="default-button text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+                    Continue
+                </button>
+            </div>
 
-            <button id="submit" type="button"
-                    class="text-white bg-success box-border border border-transparent hover:bg-success-strong focus:ring-4 focus:ring-success-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
-                Continue
-            </button>
         </form>
 
         {# Pet Results #}
@@ -176,10 +178,12 @@
                         </dd>
                     </div>
                 </dl>
-                <button id="back" type="button"
-                        class="text-white bg-success box-border border border-transparent hover:bg-success-strong focus:ring-4 focus:ring-success-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
-                    Enter Another Pet?
-                </button>
+                <div class="center-button">
+                    <button id="back" type="button"
+                            class="default-button text-white bg-brand box-border border border-transparent hover:bg-brand-strong focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+                        Enter Another Pet?
+                    </button>
+                </div>
             </div>
         </div>
     </div>

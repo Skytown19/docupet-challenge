@@ -17,6 +17,20 @@ body {
     color: white;
 }
 
+.default-button {
+    background-color: #00a0e5;
+}
+
+.center-button {
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+}
+
+.checkbox {
+    color: #00a0e5;
+}
+
 h1 {
     text-align: center;
     margin-bottom: 1em;
