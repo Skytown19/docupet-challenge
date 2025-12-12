@@ -7,11 +7,11 @@ use App\Entity\DangerousBreed;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Pet as PetEntity;
 use App\Model\Pet as PetModel;
+use App\Response\PetResponse;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use App\Repository\BreedRepository;
 
 class PetController extends AbstractController
 {
@@ -22,11 +22,6 @@ class PetController extends AbstractController
         $pet = new PetEntity();
 
         $breedString = $request->getPayload()->get('breed');
-
-        $existingBreeds = array_map(function ($breed) {
-            return $breed->getType();
-        }, $entityManager->getRepository(Breed::class)->findAll());
-
         $payloadBreeds = PetModel::breedStringToCollection($breedString);
 
         // Creates Breeds that Don't Exist in the Database Yet
@@ -47,7 +42,7 @@ class PetController extends AbstractController
         $pet->setType($request->getPayload()->get('type'));
         $pet->setName($request->getPayload()->get('name'));
         $pet->setSex($request->getPayload()->get('sex'));
-        $pet->setDateOfBirth($request->getPayload()->get('date_of_birth'));
+        $pet->setDateOfBirth($request->getPayload()->get('dateOfBirth'));
         $entityManager->persist($pet);
         $entityManager->flush();
 
@@ -56,7 +51,8 @@ class PetController extends AbstractController
         $dangerousBreeds = array_map(function ($breed) {
             return $breed->getBreed()->getType();
         }, $dangerousBreeds);
-        $petResponse = new \App\Response\PetResponse($pet, $dangerousBreeds);
+        
+        $petResponse = new PetResponse($pet, $dangerousBreeds);
         return $this->json($petResponse);
     }
 }
