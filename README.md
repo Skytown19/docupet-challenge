@@ -16,6 +16,9 @@ docker exec -it docupet-challenge-symfony-1 php bin/console doctrine:migrations:
 * Finally, to fill the DB with data
 ```
 cat db_dumps/breed_table.sql | docker exec -i docupet-challenge-docupet-db-1 mysql -u docupet -ppassword docupet
+```
+and
+```
 cat db_dumps/dangerous_breed_table.sql | docker exec -i docupet-challenge-docupet-db-1 mysql -u docupet -ppassword docupet
 ```
 
