@@ -13,5 +13,25 @@ body {
 }
 
 .selected {
-    background: chartreuse;
+    background: #00a0e5;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 1em;
+    color: #1f5587;
+    font-weight: bold;
+}
+
+#formContainer {
+    margin-top: 2em;
+    margin-bottom: 1em;
+    background-color: white;
+    padding: 1em;
+    border-radius: 5px;
+}
+
+#petDatePicker {
+    margin-top: 1em;
 }

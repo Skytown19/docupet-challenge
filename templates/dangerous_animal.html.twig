@@ -1,164 +1,186 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
-    <div id="dangerousAnimalForm">
-        <form>
+    <div id="formContainer" class="max-w-sm mx-auto">
+        <form id="dangerousAnimalForm" class="max-w-sm mx-auto">
+            <h1>Tell us about your pet</h1>
             {# PET TYPE SELECTOR #}
-            <span class="text-sm font-medium text-gray-700"> What type of pet do you have? </span><br>
-            <div class="inline-flex rounded-base shadow-xs -space-x-px" role="group">
-                <button
-                    id="petTypeDog"
-                    type="button"
-                    class="text-body bg-neutral-primary-soft border border-default hover:bg-neutral-secondary-medium hover:text-heading font-medium leading-5 rounded-s-base text-sm px-3 py-2 focus:outline-none">
-                    Dog
-                </button>
-                <button
-                    id="petTypeCat"
-                    type="button"
-                    class="text-body bg-neutral-primary-soft border border-default hover:bg-neutral-secondary-medium hover:text-heading font-medium leading-5 rounded-e-base text-sm px-3 py-2 focus:outline-none">
-                    Cat
-                </button>
+            <div class="mb-5">
+                <span class="text-sm font-medium text-gray-700"> What type of pet do you have? </span><br>
+                <div class="inline-flex rounded-base shadow-xs -space-x-px" role="group">
+                    <button
+                        id="petTypeDog"
+                        type="button"
+                        class="text-body bg-neutral-primary-soft border border-default hover:bg-neutral-secondary-medium hover:text-heading font-medium leading-5 rounded-s-base text-sm px-3 py-2 focus:outline-none">
+                        Dog
+                    </button>
+                    <button
+                        id="petTypeCat"
+                        type="button"
+                        class="text-body bg-neutral-primary-soft border border-default hover:bg-neutral-secondary-medium hover:text-heading font-medium leading-5 rounded-e-base text-sm px-3 py-2 focus:outline-none">
+                        Cat
+                    </button>
+                </div>
             </div>
 
             {# PET NAME FIELD #}
-            <label for="petName">
-                <span class="block mb-2.5 text-sm font-medium text-heading"> Pet Name: </span>
+            <div class="mb-5">
+                <label for="petName" class="block mb-2.5 text-sm font-medium text-heading">Pet Name:</label>
                 <input type="text" id="petName" name="petName"
                        class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body">
-            </label>
+            </div>
 
             {# PET BREED FIELD #}
-            <label for="petBreed" class="block mb-2.5 text-sm font-medium text-heading">What breed are they?</label>
-            <select id="petBreed"
-                    class="block w-full px-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body">
-                <option selected>Choose a breed</option>
-                <option value="Doberman">Doberman</option>
-                <option value="St. Bernard">St. Bernard</option>
-                <option value="Poodl">Poodle</option>
-                <option value="Mastiff">Mastiff</option>
-            </select>
-
-            <div class="flex items-center mb-4">
-                <input id="unknown-checkbox" type="checkbox" value="Unknown" class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
-                <label for="unknown-checkbox" class="select-none ms-2 text-sm font-medium text-heading">I don't know</label>
+            <div class="mb-5">
+                <label for="petBreed" class="block mb-2.5 text-sm font-medium text-heading">What breed are they?</label>
+                <select id="petBreed"
+                        class="block w-full px-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body">
+                    <option selected>Choose a breed</option>
+                    <option value="Doberman">Doberman</option>
+                    <option value="St. Bernard">St. Bernard</option>
+                    <option value="Poodl">Poodle</option>
+                    <option value="Mastiff">Mastiff</option>
+                </select>
             </div>
-            <div class="flex items-center">
-                <input id="mixedCheckbox" type="checkbox" value="Mixed" class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
-                <label for="mixedCheckbox" class="select-none ms-2 text-sm font-medium text-heading">It's a mix</label>
+            <div class="mb-5">
+                <div class="flex items-center">
+                    <input id="unknown-checkbox" type="checkbox" value="Unknown"
+                           class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
+                    <label for="unknown-checkbox" class="select-none ms-2 text-sm font-medium text-heading">
+                        I don't know
+                    </label>
+                </div>
+                <div class="flex items-center">
+                    <input id="mixedCheckbox" type="checkbox" value="Mixed"
+                           class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
+                    <label for="mixedCheckbox" class="select-none ms-2 text-sm font-medium text-heading">
+                        It's a mix
+                    </label>
+                </div>
             </div>
-
-            <div id="mixedBreedInput" hidden>
-                <label for="petMixedBreed">
-                    <span class="block mb-2.5 text-sm font-medium text-heading"> Pet Breed </span>
-                </label>
+            <div id="mixedBreedInput" class="mb-5" hidden>
+                <label for="petMixedBreed" hidden>Pet Breed</label>
                 <input type="text" id="petMixedBreed" name="petMixedBreed"
-                       class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body">
+                       class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body"
+                       placeholder="Collie, Poodle, Lab"
+                >
             </div>
-
 
             {# PET GENDER FIELD #}
-            <span class="text-sm font-medium text-gray-700"> What gender are they? </span><br>
-            <div class="inline-flex rounded-base shadow-xs -space-x-px" role="group">
-                <button
+            <div class="mb-5">
+                <span class="text-sm font-medium text-gray-700"> What gender are they? </span><br>
+                <div class="inline-flex rounded-base shadow-xs -space-x-px" role="group">
+                    <button
                         id="petSexMale"
                         type="button"
                         class="text-body bg-neutral-primary-soft border border-default hover:bg-neutral-secondary-medium hover:text-heading font-medium leading-5 rounded-s-base text-sm px-3 py-2 focus:outline-none">
-                    Male
-                </button>
-                <button
+                        Male
+                    </button>
+                    <button
                         id="petSexFemale"
                         type="button"
                         class="text-body bg-neutral-primary-soft border border-default hover:bg-neutral-secondary-medium hover:text-heading font-medium leading-5 rounded-e-base text-sm px-3 py-2 focus:outline-none">
-                    Female
-                </button>
-            </div>
-            <br>
-
-            <label for="petAge">
-                <span class="text-sm font-medium text-gray-700"> Do you know their date of birth?</span>
-            </label>
-            <br>
-
-            <div class="inline-flex rounded-base shadow-xs -space-x-px" role="group">
-                <button
-                    id="petKnownDateOfBirth"
-                    type="button"
-                    class="text-body bg-neutral-primary-soft border border-default hover:bg-neutral-secondary-medium hover:text-heading font-medium leading-5 rounded-s-base text-sm px-3 py-2 focus:outline-none">
-                    Yes
-                </button>
-                <button
-                    id="petUnknownDateOfBirth"
-                    type="button"
-                    class="text-body bg-neutral-primary-soft border border-default hover:bg-neutral-secondary-medium hover:text-heading font-medium leading-5 rounded-e-base text-sm px-3 py-2 focus:outline-none">
-                    No
-                </button>
-            </div>
-
-            <div class="relative max-w-sm" id="petDatePicker" hidden>
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                    <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z"/></svg>
+                        Female
+                    </button>
                 </div>
-                <label for="default-datepicker">Please Select Date from Below</label>
-                <input datepicker id="default-datepicker" type="text" class="block w-full ps-9 pe-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="Select date">
+            </div>
+            <div class="mb-5">
+                <label for="petAge">
+                    <span class="text-sm font-medium text-gray-700"> Do you know their date of birth?</span>
+                </label>
+                <br>
+
+                <div class="inline-flex rounded-base shadow-xs -space-x-px" role="group">
+                    <button
+                        id="petKnownDateOfBirth"
+                        type="button"
+                        class="text-body bg-neutral-primary-soft border border-default hover:bg-neutral-secondary-medium hover:text-heading font-medium leading-5 rounded-s-base text-sm px-3 py-2 focus:outline-none">
+                        Yes
+                    </button>
+                    <button
+                        id="petUnknownDateOfBirth"
+                        type="button"
+                        class="text-body bg-neutral-primary-soft border border-default hover:bg-neutral-secondary-medium hover:text-heading font-medium leading-5 rounded-e-base text-sm px-3 py-2 focus:outline-none">
+                        No
+                    </button>
+                </div>
+                <br>
+
+                <div class="relative max-w-sm" id="petDatePicker" hidden>
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                             width="24"
+                             height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                  stroke-width="2"
+                                  d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z"/>
+                        </svg>
+                    </div>
+                    <input datepicker id="default-datepicker" type="text"
+                           class="block w-full ps-9 pe-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand px-3 py-2.5 shadow-xs placeholder:text-body"
+                           placeholder="Select date">
+                </div>
+
+                <div id="petApproximateAge" hidden>
+                    <label for="number-input">
+                        <span class="text-sm font-medium text-gray-700"> Approximate Age</span>
+                    </label>
+                    <input type="number" id="number-input" aria-describedby="helper-text-explanation"
+                           class="block w-full px-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body"/>
+                </div>
             </div>
 
-            <div id="petApproximateAge" hidden>
-                <label for="number-input" class="block mb-2.5 text-sm font-medium text-heading">Approximate Age</label>
-                <input type="number" id="number-input" aria-describedby="helper-text-explanation" class="block w-full px-3 py-2.5 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body" />
-            </div>
+            <button id="submit" type="button"
+                    class="text-white bg-success box-border border border-transparent hover:bg-success-strong focus:ring-4 focus:ring-success-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+                Continue
+            </button>
         </form>
-        <br>
-        <button id="submit" type="button"
-                class="text-white bg-success box-border border border-transparent hover:bg-success-strong focus:ring-4 focus:ring-success-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
-            Submit
-        </button>
-    </div>
 
-    {# PET RESULTS #}
-    <div id="results" hidden>
-        <div class="flow-root">
-            <dl class="-my-3 divide-y divide-gray-200 text-sm">
-                <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
-                    <dt class="font-medium text-gray-900">Name</dt>
-                    <dd id="petNameResult" class="text-gray-700 sm:col-span-2"></dd>
-                </div>
+        {# Pet Results #}
+        <div id="results" hidden>
+            <div class="flow-root mb-5">
+                <dl class="-my-3 divide-y divide-gray-200 text-sm">
+                    <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+                        <dt class="font-medium text-gray-900">Name</dt>
+                        <dd id="petNameResult" class="text-gray-700 sm:col-span-2"></dd>
+                    </div>
 
-                <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
-                    <dt class="font-medium text-gray-900">Type</dt>
-                    <dd id="petTypeResult" class="text-gray-700 sm:col-span-2"></dd>
-                </div>
+                    <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+                        <dt class="font-medium text-gray-900">Type</dt>
+                        <dd id="petTypeResult" class="text-gray-700 sm:col-span-2"></dd>
+                    </div>
 
-                <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
-                    <dt class="font-medium text-gray-900">Breed</dt>
-                    <dd id="petBreedResult" class="text-gray-700 sm:col-span-2"></dd>
-                </div>
+                    <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+                        <dt class="font-medium text-gray-900">Breed</dt>
+                        <dd id="petBreedResult" class="text-gray-700 sm:col-span-2"></dd>
+                    </div>
 
-                <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
-                    <dt class="font-medium text-gray-900">Date of Birth</dt>
-                    <dd id="petDateOfBirthResult" class="text-gray-700 sm:col-span-2"></dd>
-                </div>
+                    <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+                        <dt class="font-medium text-gray-900">Date of Birth</dt>
+                        <dd id="petDateOfBirthResult" class="text-gray-700 sm:col-span-2"></dd>
+                    </div>
 
-                <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
-                    <dt class="font-medium text-gray-900">Age</dt>
-                    <dd id="petDateOfBirthResult" class="text-gray-700 sm:col-span-2"></dd>
-                </div>
+                    <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+                        <dt class="font-medium text-gray-900">Age</dt>
+                        <dd id="petDateOfBirthResult" class="text-gray-700 sm:col-span-2"></dd>
+                    </div>
 
-                <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
-                    <dt class="font-medium text-gray-900">Sex</dt>
-                    <dd id="petSexResult" class="text-gray-700 sm:col-span-2"></dd>
-                </div>
+                    <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+                        <dt class="font-medium text-gray-900">Sex</dt>
+                        <dd id="petSexResult" class="text-gray-700 sm:col-span-2"></dd>
+                    </div>
 
-                <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
-                    <dt class="font-medium text-gray-900">Dangerous</dt>
-                    <dd id="isDangerousAnimal" class="text-gray-700 sm:col-span-2">
-                    </dd>
-                </div>
-            </dl>
+                    <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+                        <dt class="font-medium text-gray-900">Dangerous</dt>
+                        <dd id="isDangerousAnimal" class="text-gray-700 sm:col-span-2">
+                        </dd>
+                    </div>
+                </dl>
+                <button id="back" type="button"
+                        class="text-white bg-success box-border border border-transparent hover:bg-success-strong focus:ring-4 focus:ring-success-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+                    Enter Another Pet?
+                </button>
+            </div>
         </div>
-        <button id="back" type="button"
-                class="text-white bg-success box-border border border-transparent hover:bg-success-strong focus:ring-4 focus:ring-success-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
-            Enter Another Pet?
-        </button>
     </div>
 {% endblock %}
