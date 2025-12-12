@@ -48,6 +48,7 @@ class PetResponse
          * I hate this; and I should just properly fix the relationship between breeds and dangerous breeds -.-
          */
         foreach ($pet->getBreed() as $breed) {
+
             if (in_array($breed->getType(), $dangerousBreeds)) {
                 return true;
             }
