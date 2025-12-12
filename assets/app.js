@@ -73,10 +73,12 @@ function domReady () {
     const petSexFemaleButton = document.getElementById('petSexFemale');
     const petKnownDateOfBirthButton = document.getElementById('petKnownDateOfBirth');
     const petUnknownDateOfBirthButton = document.getElementById('petUnknownDateOfBirth');
-    const mixedCheckbox = document.getElementById('mixedCheckbox');
-    const unknownBreedCheckbox = document.getElementById('unknownCheckbox');
+    const mixedRadio = document.getElementById('mixedRadio');
+    const unknownRadio = document.getElementById('unknownRadio');
     const backButton = document.getElementById('back');
     const datePicker = document.getElementById('petDatePicker');
+    const petBreedDropdown = document.getElementById('petBreed');
+    const breedRadioButtons = document.getElementById('customBreedContainer');
     const mixedBreed = document.getElementById('mixedBreed');
     const mixedBreedInput = document.getElementById('petMixedBreed');
     const approximateAgeContainer = document.getElementById('approximateAge');
@@ -130,9 +132,27 @@ function domReady () {
         }
     });
 
-    mixedCheckbox.addEventListener('click', () => {
+    mixedRadio.addEventListener('click', () => {
         mixedBreed.toggleAttribute('hidden');
     });
+
+    unknownRadio.addEventListener('click', () => {
+        if (!mixedBreed.hasAttribute('hidden')) {
+            mixedBreed.toggleAttribute('hidden');
+        }
+    });
+
+    petBreedDropdown.onchange = () => {
+        if (petBreedDropdown.value === 'idk') {
+            breedRadioButtons.toggleAttribute('hidden');
+            return;
+        }
+
+        // Only toggle hidden if element is not already hidden
+        if (!breedRadioButtons.hasAttribute('hidden')) {
+            breedRadioButtons.toggleAttribute('hidden');
+        }
+    }
 
     backButton.addEventListener('click', () => {
         document.getElementById('dangerousAnimalForm').toggleAttribute('hidden');
@@ -149,11 +169,9 @@ function domReady () {
         pet.setName(document.getElementById('petName').value);
 
         // Case for Mix & Unknonw Breed
-        if (mixedCheckbox.checked) {
-            console.log('HELLO');
-            console.log(mixedBreedInput.value);
+        if (mixedRadio.checked) {
             pet.setBreed(mixedBreedInput.value);
-        } else if (unknownBreedCheckbox.checked) {
+        } else if (unknownRadio.checked) {
             pet.setBreed('Unknown');
         } else {
             switch (pet.getType()) {
