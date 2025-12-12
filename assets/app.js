@@ -74,9 +74,11 @@ function domReady () {
     const petKnownDateOfBirthButton = document.getElementById('petKnownDateOfBirth');
     const petUnknownDateOfBirthButton = document.getElementById('petUnknownDateOfBirth');
     const mixedCheckbox = document.getElementById('mixedCheckbox');
+    const unknownBreedCheckbox = document.getElementById('unknownCheckbox');
     const backButton = document.getElementById('back');
     const datePicker = document.getElementById('petDatePicker');
-    const mixedBreedInput = document.getElementById('mixedBreedInput');
+    const mixedBreed = document.getElementById('mixedBreed');
+    const mixedBreedInput = document.getElementById('petMixedBreed');
     const approximateAgeInput = document.getElementById('petApproximateAge');
 
     // Event Listeners
@@ -127,7 +129,7 @@ function domReady () {
     });
 
     mixedCheckbox.addEventListener('click', () => {
-        document.getElementById('mixedBreedInput').toggleAttribute('hidden');
+        mixedBreed.toggleAttribute('hidden');
     });
 
     backButton.addEventListener('click', () => {
@@ -138,7 +140,17 @@ function domReady () {
     document.getElementById('submit').addEventListener('click', async () => {
         // Set properties that aren't automatic
         pet.setName(document.getElementById('petName').value);
-        pet.setBreed(document.getElementById('petBreed').value);
+
+        if (mixedCheckbox.checked) {
+            console.log('HELLO');
+            console.log(mixedBreedInput.value);
+            pet.setBreed(mixedBreedInput.value);
+        } else if (unknownBreedCheckbox.checked) {
+            pet.setBreed('Unknown');
+        } else {
+            pet.setBreed(document.getElementById('petBreed').value);
+        }
+
         pet.setDateOfBirth(document.getElementById('default-datepicker').value);
         const response = await submitPet(pet);
         const result = await response.json();
