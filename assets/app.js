@@ -187,12 +187,9 @@ function domReady () {
         // Case for Unknown Date of Birth
         if (petUnknownDateOfBirthButton.classList.contains('selected')) {
             let approximateAge = approximateAgeInput.value;
-            console.log(approximateAge);
             let approximateBirthYear = new Date().getFullYear() - approximateAge;
-            console.log(approximateBirthYear);
             let approximateBirthDate = new Date();
             approximateBirthDate.setFullYear(approximateBirthYear);
-            console.log(approximateBirthDate);
             pet.setDateOfBirth(approximateBirthDate.toISOString().slice(0, 10));
         } else {
             pet.setDateOfBirth(document.getElementById('default-datepicker').value);
